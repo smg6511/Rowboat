@@ -1,5 +1,9 @@
 Changelog for Rowboat.
 
+Rowboat 1.0.2
+==============
+- Added "returnJSON" parameter allowing output to json-encoded string when tpl is not being used
+
 Rowboat 1.0.1
 ==============
 - Refactoring to allow for other database drivers to be developed

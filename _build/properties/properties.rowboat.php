@@ -131,6 +131,14 @@ $properties = array(
         'lexicon' => 'rowboat:properties',
     ),
     array(
+        'name' => 'returnJSON',
+        'desc' => 'prop_rowboat.returnjson_desc',
+        'type' => 'combo-boolean',
+        'options' => '',
+        'value' => false,
+        'lexicon' => 'rowboat:properties',
+    ),
+    array(
         'name' => 'debug',
         'desc' => 'prop_rowboat.debug_desc',
         'type' => 'combo-boolean',

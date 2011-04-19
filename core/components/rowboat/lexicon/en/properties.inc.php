@@ -39,3 +39,4 @@ $_lang['prop_rowboat.table_desc'] = 'The database table to query.';
 $_lang['prop_rowboat.tpl_desc'] = 'The chunk to use for each row of results. If blank, will output an array of properties available for the tpl.';
 $_lang['prop_rowboat.toplaceholder_desc'] = 'If set, will output the content to the placeholder specified in this property, rather than outputting the content directly.';
 $_lang['prop_rowboat.where_desc'] = 'A JSON where statement, such as {"name":"value"}. See the docs for more examples.';
+$_lang['prop_rowboat.returnjson_desc'] = 'Return a JSON-encoded string of the query result (applies only when tpl parameter is not set).';

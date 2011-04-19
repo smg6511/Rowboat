@@ -23,6 +23,7 @@ $cacheResults = $modx->getOption('cacheResults',$scriptProperties,1);
 $cacheTime = $modx->getOption('cacheTime',$scriptProperties,3600);
 $outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n");
 $placeholderPrefix = $modx->getOption('placeholderPrefix',$scriptProperties,'rowboat.');
+$returnJSON = $modx->getOption('returnJSON',$scriptProperties,false);
 $debug = $modx->getOption('debug',$scriptProperties,false);
 
 $total = 0;
@@ -119,11 +120,15 @@ if (is_array($results)) {
         $row['_alt'] = $idx % 2;
         if ($idx == 0) $row['_first'] = true;
         if ($idx == $ct-1) $row['_last'] = true;
-        
+
         if (!empty($tpl)) {
             $output[] = $rowboat->getChunk($tpl,$row);
         } else {
-            $output[] = print_r($row,true);
+            if ($returnJSON) {
+                $output[] = $row;
+            } else {
+                $output[] = print_r($row,true);
+            }
         }
         $idx++;
     }
@@ -137,7 +142,11 @@ $placeholders['limit'] = $limit;
 $modx->setPlaceholders($placeholders,$placeholderPrefix);
 
 /* output */
-$output = implode($outputSeparator,$output);
+if (empty($tpl) && $returnJSON) {
+    $output = $modx->toJSON($output);
+} else {
+    $output = implode($outputSeparator,$output);
+}
 if (!empty($rowboat->debug)) {
     $output .= $rowboat->debug->finish();
 }
